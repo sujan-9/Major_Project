@@ -16,7 +16,8 @@ class ProductDetailState extends State<ProductDetail> {
       appBar: AppBar(
          shadowColor: Colors.transparent,
         leading: InkWell(
-          onTap:(){Navigator.pop(context);} ,
+          onTap:(){Navigator.pop(context);
+          } ,
           child: Icon( Icons.arrow_back_ios)),
         backgroundColor: Colors.transparent,
         actions: const  [
@@ -30,9 +31,9 @@ class ProductDetailState extends State<ProductDetail> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-          const   custom_detailcard(),
+            custom_detailcard(),
          const   SizedBox(height: 5,),
-          const   DetailText(),
+              DetailText(),
         const    SizedBox(height: 15,),
             _contactinfo(),
             const SizedBox(height: 10,),

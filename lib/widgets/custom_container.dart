@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class custom_detailcard extends StatelessWidget {
-  const custom_detailcard({Key? key}) : super(key: key);
+   custom_detailcard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,10 @@ class custom_detailcard extends StatelessWidget {
       //margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Color(0xFFD9D9D9),
-        borderRadius: BorderRadius.circular(9)
-        //image: 
+        borderRadius: BorderRadius.circular(9),
+        // image: Image.asset("assets/images/iphone8plus.png",
+        // fit: BoxFit.cover,),
+        
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -38,6 +40,7 @@ class custom_detailcard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.white,
+        //image: 
       ),
       
     );

@@ -31,7 +31,7 @@ List<Product> demoProducts = [
      
      
      ],
-    thumbnailImage: "assets/images/iphones.png",
+    thumbnailImage: "assets/images/iphone5s.png",
    
     name: "Iphone 5s ",
     price: "Rs 20,000",
@@ -93,7 +93,7 @@ List<Product> demoProducts = [
   ),
    Product(
     id: 6,
-       thumbnailImage: "assets/images/iphon6s.png",
+    thumbnailImage: "assets/images/iphone6s.png",
     images: [
        "assets/images/iphone6s.png",
     ],

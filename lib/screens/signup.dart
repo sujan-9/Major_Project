@@ -96,7 +96,7 @@ class _sign_in_screenState extends State<sign_in_screen> {
                 ),
             
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              prefixIcon: Icon(Icons.mail),
+              prefixIcon: Icon(Icons.person),
                enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
             borderSide: BorderSide(color: Colors.grey, width: 1.5),
@@ -206,6 +206,7 @@ class _sign_in_screenState extends State<sign_in_screen> {
               
                
                  decoration:  InputDecoration(
+                 
               labelText: "Phone",
               labelStyle: TextStyle(
                 color: Colors.blueGrey,
@@ -220,7 +221,7 @@ class _sign_in_screenState extends State<sign_in_screen> {
                 ),
             
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              prefixIcon: Icon(Icons.mail),
+              prefixIcon: Icon(Icons.phone),
                enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
             borderSide: BorderSide(color: Colors.grey, width: 1.5),
@@ -290,67 +291,7 @@ class _sign_in_screenState extends State<sign_in_screen> {
                 ),
               ),
                   ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                     // color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                     //box shadow
-          
-                    ),
-                    child: TextFormField(
-                      key: _passwordFieldKey,
-                       validator: (value) {
-                    if (value==null) {
-                      return 'Enter a valid password!';
-                    }
-                    else if (value.length<8){
-                      return 'Password must be 8 character';
-                    }
-                    else if (value != _passwordFieldKey.currentState?.value) {
-                          return 'Password do not match';
-                        }
-                    return null;
-                  },
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 18,
-                      fontWeight: FontWeight.w400),
-                      
-                obscureText: true,
-                
-               
-               
-              
-               
-                 decoration:  InputDecoration(
-              labelText: "password",
-              labelStyle: TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-              hintText: "Confirm your password",
-             // focusColor: Colors.orange,
-              border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: Colors.grey, width: 2),
-                ),
-            
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              prefixIcon: Icon(Icons.lock),
-               enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
-            borderSide: BorderSide(color: Colors.grey, width: 1.5),
-               ),
-                focusedBorder: OutlineInputBorder(
-            gapPadding: 0.0,
-            borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(color: Colors.grey.withOpacity(0.5), width: 2),
-               ),
-                ),
-              ),
-                  ),
+                  
                    Container(
                      // margin: EdgeInsets.fromLTRB(10,10,5,5),
                       padding: EdgeInsets.fromLTRB(20,5,20,5),
@@ -359,7 +300,18 @@ class _sign_in_screenState extends State<sign_in_screen> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                    child: TextButton(
-                        onPressed: null,
+                       onPressed: (){
+                        if(_formKey.currentState!.validate()){
+                             Navigator.pushNamed(context, '/login');
+                             
+                        }
+                        return null;
+                          
+                         
+                        
+                         
+                  
+                  },
       
       
                        

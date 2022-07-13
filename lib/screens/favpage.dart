@@ -20,6 +20,7 @@ class _FavPageState extends State<FavPage> {
       onWillPop: _requestPop,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.grey,
           leading: IconButton(
             onPressed: (){
               Navigator.of(context).pop(true);

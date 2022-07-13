@@ -5,8 +5,12 @@ import 'package:loginbar/Models/product.dart';
 
 
 class CustomGridView extends StatefulWidget {
-  final String? name, image, price;
-    CustomGridView({Key? key, this.name, this.image, this.price}) : super(key: key);
+  //final String? name, image, price;
+    CustomGridView({Key? key,
+    //  this.name,
+    //  this.image, 
+    //  this.price
+     }) : super(key: key);
 
   @override
   State<CustomGridView> createState() => _CustomGridViewState();
@@ -83,9 +87,9 @@ class _CustomGridViewState extends State<CustomGridView> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal:10.0,vertical: 8.0),
                             child: InkWell(
-                              onTap: (){
-                                print("Sujan Bhattarai");
-                              },
+                              // onTap: (){
+                              //   print("Sujan ");
+                              // },
                               child: Container(
                                     padding: const EdgeInsets.all(5.0),
                                   decoration:const BoxDecoration(
