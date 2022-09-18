@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'Samsung-prediction.dart';
+import 'iphone-prediction.dart';
 class SelectModel extends StatefulWidget {
    SelectModel({Key? key}) : super(key: key);
 
@@ -18,7 +21,10 @@ class _SelectModelState extends State<SelectModel> {
             children: [
               InkWell(
                 onTap: () {
-                  print('hello');
+                    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>  SamsungPrediction()),
+  );
                 },
                 child: Container(
                   height: 65,
@@ -34,7 +40,10 @@ class _SelectModelState extends State<SelectModel> {
                 SizedBox(height: 25,),
              InkWell(
                 onTap: () {
-                  print('hello');
+                  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>  IphonePrediction()),
+  );
                 },
                 child: Container(
                   height: 65,
