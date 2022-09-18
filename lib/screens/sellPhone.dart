@@ -192,7 +192,7 @@ class _SellPhoneState extends State<SellPhone> {
         borderRadius: BorderRadius.circular(5),
         color: Colors.grey.shade300
       ),
-       child:  Center(
+       child:  const Center(
          child: TextField(
                     keyboardType: TextInputType.multiline,
                     maxLines: 2,
@@ -213,7 +213,7 @@ class _SellPhoneState extends State<SellPhone> {
 
   Widget _text(String value){
     return Text(value,
-    style: TextStyle(
+    style:  const TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.normal,

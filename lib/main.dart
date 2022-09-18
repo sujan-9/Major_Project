@@ -6,6 +6,7 @@ import 'package:loginbar/screens/gridview.dart';
 import 'package:loginbar/screens/dashboard.dart';
 import 'package:loginbar/screens/login.dart';
 import 'package:loginbar/screens/prediction.dart';
+import 'package:loginbar/screens/profile.dart';
 import 'package:loginbar/screens/selectmodel.dart';
 import 'package:loginbar/screens/sellPhone.dart';
 import 'package:loginbar/screens/signup.dart';
@@ -31,9 +32,9 @@ class MyApp extends StatelessWidget {
        //primarySwatch: Colors.blue
         // primarySwatch: Colors.grey,
         ),
-    
+    home: Profile(),
    // home: PredictionPrice(),
-    home: SelectModel(),
+   // home: SelectModel(),
    // home: dropdown(),
     //   initialRoute: '/',
     //   routes:{
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
     //    '/ProductDetail' :(context) =>  ProductDetail(),
     //    '/forgetpassword' :(context) => ForgetPassword(),
     //   '/favpage' :(context) => FavPage(),
-    //  //'/pricepredict' :(context) => PredictionPrice(),
+    //  '/pricepredict' :(context) => PredictionPrice(),
+    //  '/selectmodel' :(context) => SelectModel(),
       
       
     //   } ,
