@@ -17,7 +17,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      child: Scaffold(
+      child:  Scaffold(
          // backgroundColor: ConstantColors.bgColor,
           appBar: AppBar(
             centerTitle: true,

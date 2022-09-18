@@ -1,5 +1,4 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 import 'package:flutter/material.dart';
 
@@ -33,6 +32,11 @@ class custom_detailcard extends StatelessWidget {
 
     );
   }
+  /// _imagecontainer() is a function that returns a Container widget with a height of 70, a width of
+  /// 115, a border radius of 8, a white background color, and an image.
+  /// 
+  /// Returns:
+  ///   A Container widget.
   Widget _imagecontainer (){
     return Container(
       height: 70,
