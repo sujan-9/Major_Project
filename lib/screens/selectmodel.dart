@@ -11,17 +11,42 @@ class _SelectModelState extends State<SelectModel> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Padding(
-          padding:  EdgeInsets.only(top:100),
+          padding:  EdgeInsets.only(top:270,left: 20,right: 20),
           child: Column(
             children: [
-              Container(
-                height: 59,
-                color: Colors.red,),
+              InkWell(
+                onTap: () {
+                  print('hello');
+                },
+                child: Container(
+                  height: 65,
+                  decoration: BoxDecoration(
+                   color: Colors.grey.shade400,
+                   borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text('Samsung',style: TextStyle(fontSize: 25,fontWeight: FontWeight.w400),),
+                  ),
+                  ),
+              ),
                 SizedBox(height: 25,),
-              Container(
-                height: 60,
-                color: Colors.green,),
+             InkWell(
+                onTap: () {
+                  print('hello');
+                },
+                child: Container(
+                  height: 65,
+                  decoration: BoxDecoration(
+                   color: Colors.grey.shade400,
+                   borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text('Iphone',style: TextStyle(fontSize: 25,fontWeight: FontWeight.w400),),
+                  ),
+                  ),
+              ),
             ],
           ),
         ),
