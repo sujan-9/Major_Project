@@ -337,7 +337,7 @@ class _SamsungPredictionState extends State<SamsungPrediction> {
                           ),
                         ),
                         SizedBox(height: 15,),
-                         _text('Any Screen Issue?'),
+                         _text('Battery Condition'),
                          _customContainerP(
                            DropdownButton<String>(
                             value: batteryConditionvalue,
