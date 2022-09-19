@@ -16,8 +16,8 @@ class _IphonePredictionState extends State<IphonePrediction> {
   List<String> condition = ['Like New','Goode','Bad'];
   String conditionvalue = 'Like New';
 
-   List<String> ram = ['4GB','6GB','8GB','12GB'];
-   String ramvalue = '4GB';
+   List<String> batteryhealth = ['100%','Above 90%','Between 80%-90%','Below 80%',];
+   String batteryhealthvalue = '100%';
 
     List<String> storage = ['16GB','32GB','64GB','128GB','256GB','512GB'];
    String storagevalue = '16GB';
@@ -27,6 +27,14 @@ class _IphonePredictionState extends State<IphonePrediction> {
 
    List<String> model = ['Normal','Mini','Plus','PRO','ProMax',];
    String modelvalue = 'Normal';
+
+   List<String> screenIssue = ['NO','YES'];
+   String screenIssuevalue = 'NO';
+
+   List<String> phoneProblem = ['NO','YES'];
+   String phoneProblemvalue = 'NO';
+
+
 
 
   getHintStyle() {
@@ -190,10 +198,11 @@ class _IphonePredictionState extends State<IphonePrediction> {
                         ),
                       ),
                          SizedBox(height: 15,),
-                      _text('Select Ram'),
+                      _text('Select Battery Health'),
+                      SizedBox(height: 6,),
                       _customContainerP(
                            DropdownButton<String>(
-                          value: ramvalue,
+                          value: batteryhealthvalue,
                           
                           isExpanded: true,
                           icon: Icon(Icons.arrow_drop_down),
@@ -207,15 +216,15 @@ class _IphonePredictionState extends State<IphonePrediction> {
                           // ),
                           onChanged: (String ?data) {
                             setState(() {
-                              ramvalue = data!;
+                              batteryhealthvalue = data!;
                             });
                           },
-                          items: ram
-                              .map<DropdownMenuItem<String>>((String ram) {
+                          items: batteryhealth
+                              .map<DropdownMenuItem<String>>((String batteryhealth) {
                             return DropdownMenuItem<String>(
-                              value: ram,
+                              value: batteryhealth,
                               child: Text(
-                                ram,
+                                batteryhealth,
                                 style: getHintStyle(),
                               ),
                             );
@@ -256,6 +265,74 @@ class _IphonePredictionState extends State<IphonePrediction> {
                           }).toList(),
                         ),
                       ),
+
+                      SizedBox(height: 15,),
+                       _text('Any Screen Issue?'),
+                       _customContainerP(
+                         DropdownButton<String>(
+                          value: screenIssuevalue,
+                          
+                          isExpanded: true,
+                          icon: Icon(Icons.arrow_drop_down),
+                          iconSize: 24,
+                          underline: SizedBox(),
+                          elevation: 0,
+                          style: getHintStyle(),
+                          // underline: Container(
+                          //   height: 2,
+                          //   color: Colors.deepPurpleAccent,
+                          // ),
+                          onChanged: (String ?data) {
+                            setState(() {
+                              screenIssuevalue = data!;
+                            });
+                          },
+                          items: screenIssue
+                              .map<DropdownMenuItem<String>>((String screenIssue) {
+                            return DropdownMenuItem<String>(
+                              value: screenIssue,
+                              child: Text(
+                                screenIssue,
+                                style: getHintStyle(),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      SizedBox(height: 15,),
+                       _text('Any phone problem?'),
+                       _customContainerP(
+                         DropdownButton<String>(
+                          value: phoneProblemvalue,
+                          
+                          isExpanded: true,
+                          icon: Icon(Icons.arrow_drop_down),
+                          iconSize: 24,
+                          underline: SizedBox(),
+                          elevation: 0,
+                          style: getHintStyle(),
+                          // underline: Container(
+                          //   height: 2,
+                          //   color: Colors.deepPurpleAccent,
+                          // ),
+                          onChanged: (String ?data) {
+                            setState(() {
+                              phoneProblemvalue = data!;
+                            });
+                          },
+                          items: phoneProblem
+                              .map<DropdownMenuItem<String>>((String phoneProblem) {
+                            return DropdownMenuItem<String>(
+                              value: phoneProblem,
+                              child: Text(
+                                phoneProblem,
+                                style: getHintStyle(),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                        
                         
 
                      
