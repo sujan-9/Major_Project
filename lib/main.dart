@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:loginbar/screens/Samsung-prediction.dart';
 import 'package:loginbar/screens/detail_page.dart';
 import 'package:loginbar/screens/favpage.dart';
 import 'package:loginbar/screens/forget_password.dart';
 import 'package:loginbar/screens/gridview.dart';
 import 'package:loginbar/screens/dashboard.dart';
+import 'package:loginbar/screens/iphone-prediction.dart';
 import 'package:loginbar/screens/login.dart';
 import 'package:loginbar/screens/prediction.dart';
 import 'package:loginbar/screens/profile.dart';
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+     
       debugShowCheckedModeBanner: false,
       // color: Colors.white,
       theme: ThemeData(
@@ -32,9 +35,11 @@ class MyApp extends StatelessWidget {
        //primarySwatch: Colors.blue
         // primarySwatch: Colors.grey,
         ),
-    home: Profile(),
+      //  home: SamsungPrediction(),
+    //  home: SellPhone(),
+   // home: Profile(),
    // home: PredictionPrice(),
-   // home: SelectModel(),
+    home: SelectModel(),
    // home: dropdown(),
     //   initialRoute: '/',
     //   routes:{
