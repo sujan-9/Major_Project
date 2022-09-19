@@ -7,7 +7,7 @@ import 'package:loginbar/screens/gridview.dart';
 import 'package:loginbar/screens/dashboard.dart';
 import 'package:loginbar/screens/iphone-prediction.dart';
 import 'package:loginbar/screens/login.dart';
-import 'package:loginbar/screens/prediction.dart';
+
 import 'package:loginbar/screens/profile.dart';
 import 'package:loginbar/screens/selectmodel.dart';
 import 'package:loginbar/screens/sellPhone.dart';
@@ -50,8 +50,10 @@ class MyApp extends StatelessWidget {
     //    '/ProductDetail' :(context) =>  ProductDetail(),
     //    '/forgetpassword' :(context) => ForgetPassword(),
     //   '/favpage' :(context) => FavPage(),
-    //  '/pricepredict' :(context) => PredictionPrice(),
+    //  
     //  '/selectmodel' :(context) => SelectModel(),
+    //  '/iphonePrediction' :(context) => IphonePrediction(),
+    //   '/samsungPrediction' :(context) => SamsungPrediction(),
       
       
     //   } ,
