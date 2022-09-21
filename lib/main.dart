@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loginbar/data/api/api_client.dart';
+import 'package:loginbar/data/repository/auth_repo.dart';
+import 'package:loginbar/helper/dependencies.dart';
 import 'package:loginbar/screens/Samsung-prediction.dart';
 import 'package:loginbar/screens/detail_page.dart';
 import 'package:loginbar/screens/favpage.dart';
@@ -14,9 +18,12 @@ import 'package:loginbar/screens/sellPhone.dart';
 import 'package:loginbar/screens/signup.dart';
 import 'package:loginbar/screens/splashscreen.dart';
 import 'package:loginbar/widgets/dropdown.dart';
+import 'package:loginbar/controllers/auth_controller.dart';
 
 
-void main() {
+void main()async {
+   WidgetsFlutterBinding.ensureInitialized();
+    await init();
   runApp( const MyApp());
 }
 
@@ -26,9 +33,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    //  Get.find<AuthController>();
+    //  Get.find<ApiClient>();
+    
+    return GetMaterialApp(
      
       debugShowCheckedModeBanner: false,
+     // initialBinding: StoreBinding(),
       // color: Colors.white,
       theme: ThemeData(
         primaryColor: Colors.white,
@@ -39,24 +50,25 @@ class MyApp extends StatelessWidget {
     //  home: SellPhone(),
    // home: Profile(),
    // home: PredictionPrice(),
-    home: SelectModel(),
+   // home: loginscreen(),
    // home: dropdown(),
-    //   initialRoute: '/',
-    //   routes:{
-    //     '/': (context) =>splashscreen  (),
-    //     '/login': (context) => loginscreen (),
-    //     '/signup': (context) =>  sign_in_screen(),
-    //     '/dashboard':(context) => dashboard(),
-    //    '/ProductDetail' :(context) =>  ProductDetail(),
-    //    '/forgetpassword' :(context) => ForgetPassword(),
-    //   '/favpage' :(context) => FavPage(),
-    //  
-    //  '/selectmodel' :(context) => SelectModel(),
-    //  '/iphonePrediction' :(context) => IphonePrediction(),
-    //   '/samsungPrediction' :(context) => SamsungPrediction(),
+      initialRoute: '/',
+      routes:{
+        '/': (context) =>splashscreen  (),
+        '/login': (context) => loginscreen (),
+        '/signup': (context) =>  sign_in_screen(),
+        '/dashboard':(context) => dashboard(),
+       '/ProductDetail' :(context) =>  ProductDetail(),
+       '/forgetpassword' :(context) => ForgetPassword(),
+      '/favpage' :(context) => FavPage(),
+     
+     '/selectmodel' :(context) => SelectModel(),
+     '/iphonePrediction' :(context) => IphonePrediction(),
+      '/samsungPrediction' :(context) => SamsungPrediction(),
+       '/profile' :(context) => Profile(),
       
       
-    //   } ,
+      } ,
     );
   }
 }

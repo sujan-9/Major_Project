@@ -22,8 +22,8 @@ class _dashboardState extends State<dashboard> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-               leading: Icon(Icons.home),
-               backgroundColor: Colors.grey.withOpacity(1),
+               leading: Icon(Icons.home,color: Colors.black,),
+               backgroundColor: Colors.white.withOpacity(1),
                elevation: 0,
                centerTitle: true,
                title: Text('Sellphone'.toUpperCase(),

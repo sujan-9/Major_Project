@@ -1,6 +1,12 @@
+
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loginbar/controllers/auth_controller.dart';
 import 'package:loginbar/screens/login.dart';
+
+import '../Models/signup_body_model.dart';
 class sign_in_screen extends StatefulWidget {
   sign_in_screen({Key? key}) : super(key: key);
 
@@ -9,14 +15,54 @@ class sign_in_screen extends StatefulWidget {
 }
 
 class _sign_in_screenState extends State<sign_in_screen> {
+
+  var emailController = TextEditingController();
+  var passController = TextEditingController();
+  var phoneController = TextEditingController();
+  var nameController = TextEditingController();
+
+  void _registration(){
+    var authController = Get.find<AuthController>();
+    String name = nameController.text.trim();
+    String email = emailController.text.trim();
+    String phone = phoneController.text.trim();
+    String password = passController.text.trim();
+    // print(name);
+    // print(email);
+    // print(phone);
+    // print(password);
+        
+
+    SignUpBody signUpBody = SignUpBody(
+      name: name,
+      email: email,
+      phone: phone,
+      password: password);
+          
+      
+      authController.registration(signUpBody).then((status){
+         if(status.isSuccess){
+           Navigator.pushNamed(context, '/login');
+          print('sucess reg');
+         }else{
+          print(status.message);
+          //print('faules');
+         // print(signUpBody);
+         }
+      });
+     // print(signUpBody.toString());
+  }
+
+
+
   final RegExp emailRegex = new RegExp(
       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
 
   final RegExp phoneRegex = new RegExp(r'^[6-9]\d{9}$');
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final _passwordFieldKey = GlobalKey<FormFieldState<String>>();
+     final _formKey = GlobalKey<FormState>();
+     final _passwordFieldKey = GlobalKey<FormFieldState<String>>();
      Future<bool> _requestPop() {
     Navigator.of(context).pop();
     return new Future.value(false);
@@ -25,7 +71,10 @@ class _sign_in_screenState extends State<sign_in_screen> {
       child: WillPopScope(
         onWillPop: _requestPop,
         child: Scaffold(
-          body: SingleChildScrollView(
+          body:
+          //  GetBuilder<AuthController>(builder:(_authController){
+          // return
+           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             padding: EdgeInsets.fromLTRB(10, 15, 10, 5),
             child: Center(
@@ -71,11 +120,12 @@ class _sign_in_screenState extends State<sign_in_screen> {
           
                     ),
                     child: TextFormField(
+                      controller: nameController,
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18,
                       fontWeight: FontWeight.w400),
                       
-                obscureText: false,
+                       obscureText: false,
                 
                
                
@@ -111,6 +161,8 @@ class _sign_in_screenState extends State<sign_in_screen> {
                    if (value == null || value.trim().isEmpty) {
                               return 'Please enter your name';
                             }
+                              else if (value.length<8){
+                             return 'Password must be 8 character';}
                             return null ;
                 },
               ),
@@ -125,6 +177,7 @@ class _sign_in_screenState extends State<sign_in_screen> {
           
                     ),
                     child: TextFormField(
+                      controller: emailController,
                       validator: (value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please enter your email address';
@@ -184,10 +237,11 @@ class _sign_in_screenState extends State<sign_in_screen> {
           
                     ),
                     child: TextFormField(
+                      controller: phoneController,
                       
                       
                        validator: (value){
-                   if (value == null || value.trim().isEmpty) {
+                       if (value == null || value.trim().isEmpty) {
                               return 'Please enter your phone number';
                             }
                             else  if (!phoneRegex.hasMatch(value)) {
@@ -243,6 +297,7 @@ class _sign_in_screenState extends State<sign_in_screen> {
           
                     ),
                     child: TextFormField(
+                      controller: passController,
                       key: _passwordFieldKey,
                        validator: (value) {
                     if (value==null) {
@@ -302,7 +357,15 @@ class _sign_in_screenState extends State<sign_in_screen> {
                    child: TextButton(
                        onPressed: (){
                         if(_formKey.currentState!.validate()){
-                             Navigator.pushNamed(context, '/login');
+                          //show custom snackbar success
+
+                            // Navigator.pushNamed(context, '/login');
+                            
+                            _registration();
+                            // {
+                            //   print(SignUpBody);
+                            // };
+                           
                              
                         }
                         return null;
@@ -346,7 +409,12 @@ class _sign_in_screenState extends State<sign_in_screen> {
                   ]
             ),
         ),
-          ))),
+          )
+          )
+          // })
+      ),
       ));
+
+
   }
 }

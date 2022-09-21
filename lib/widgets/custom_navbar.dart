@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 import 'package:flutter/material.dart';
+import 'package:loginbar/screens/favpage.dart';
+
+import '../screens/detail_page.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({Key? key}) : super(key: key);
@@ -33,7 +35,11 @@ class CustomNavBar extends StatelessWidget {
                       child: Icon(Icons.add)),
                       InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, '/favpage');
+                        // Navigator.pushNamed(context, '/favpage');
+                         Navigator.push(
+                              context,
+                            MaterialPageRoute(builder: (context) => FavPage()),
+                           );
                       },
                       child: Icon(Icons.favorite_rounded)),
                       InkWell(

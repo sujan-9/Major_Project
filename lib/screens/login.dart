@@ -1,7 +1,11 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:get/get.dart';
+
+import '../Models/login_body_model.dart';
+import '../controllers/auth_controller.dart';
 
 class loginscreen extends StatefulWidget {
   loginscreen({Key? key}) : super(key: key);
@@ -11,6 +15,31 @@ class loginscreen extends StatefulWidget {
 }
 
 class _loginscreenState extends State<loginscreen> {
+  var _emailController = TextEditingController();
+  var _passController = TextEditingController();
+
+  void _login(){
+    var authController = Get.find<AuthController>();
+    
+    String email = _emailController.text.trim();
+    
+    String password = _passController.text.trim();
+
+    LoginBody loginBody = LoginBody(
+     
+      email: email,
+      password: password);
+      authController.login(loginBody).then((status){
+         if(status.isSuccess){
+        Navigator.pushNamed(context, '/dashboard');
+         }else{
+          print(status.message);
+         }
+      });
+      print(loginBody);
+  }
+
+
    final _formKey = GlobalKey<FormState>();
   String? _email;
   String? _password;
@@ -31,7 +60,10 @@ class _loginscreenState extends State<loginscreen> {
       child: WillPopScope(
          onWillPop: _requestPop,
         child: Scaffold(
-          body: SingleChildScrollView(
+          body: 
+          // GetBuilder<AuthController>(builder:(_authController){
+          // return !_authController.isLoading? 
+          SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Center(
              // heightFactor: 50,
@@ -75,6 +107,7 @@ class _loginscreenState extends State<loginscreen> {
           
                     ),
                     child: TextFormField(
+                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18,
                       fontWeight: FontWeight.w400),
@@ -135,6 +168,7 @@ class _loginscreenState extends State<loginscreen> {
           
                     ),
                     child: TextFormField(
+                      controller: _passController,
                       style: TextStyle(fontSize: 18,
                       fontWeight: FontWeight.w400),
                       
@@ -220,7 +254,9 @@ class _loginscreenState extends State<loginscreen> {
                       child: TextButton(
                         onPressed: (){
                         if(_formKey.currentState!.validate()){
-                             Navigator.pushNamed(context, '/dashboard');
+                            // Navigator.pushNamed(context, '/dashboard');
+                            _login();
+                            
                              
                         }
                         return null;
@@ -261,11 +297,12 @@ class _loginscreenState extends State<loginscreen> {
                 ],
               )),
             ),
-          ),
-        ),
+         )
+        //  :CircularProgressIndicator();
+        //   })
       ),
-      
-    );
+      ));
+
+
   }
-  
 }
