@@ -1,16 +1,21 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:loginbar/Models/signup_body_model.dart';
 
 import '../../constants/constant.dart';
+import 'package:http/http.dart'as http;
 
 
 class ApiClient extends GetConnect implements GetxService{
   late String token;
-  final String appBaseUrl;
+   
   
   late Map<String, String> _mainHeaders;
 
-  ApiClient({required this.appBaseUrl}){
-    baseUrl = appBaseUrl;
+  ApiClient(){
+    
     timeout = Duration(seconds: 30);
     token = AppConstants.TOKEN;
 
@@ -29,6 +34,7 @@ class ApiClient extends GetConnect implements GetxService{
   }
 
   Future<Response> getData (String uri)async{
+    late http.Response response;
     try{
       Response response =await get(uri);
       return response;
@@ -38,17 +44,29 @@ class ApiClient extends GetConnect implements GetxService{
     }
   }
 
-  Future<Response> postData (String uri, dynamic body)async{
-   // print(body.toString());
+  
+
+
+
+
+  Future<http.Response> postData (String uri, SignUpBody data)async{
+   late http.Response response;
+  
     try{
-     Response response= await post(uri,body,headers: _mainHeaders);
-     print(response.toString());
+      response= await http.post(Uri.parse("https://sellphone-api-v1.herokuapp.com/auth/registration/"),body:data.toJson());
+      print(response.body);
      return response;
+     
+   
+     
+    
+    
+     
      
     } 
     catch(e){
       print(e.toString());
-       return Response(statusCode: 1,statusText: e.toString());
+      return response;
     }
   }
 

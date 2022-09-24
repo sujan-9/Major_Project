@@ -45,6 +45,9 @@ dependencies:
   dio: ^4.0.6
   get: ^4.6.5
   shared_preferences: ^2.0.15
+  image_picker: ^0.8.5+3
+  introduction_screen: ^3.0.2
+  elastic_client: ^0.3.11
   
  
 

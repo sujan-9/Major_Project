@@ -1,12 +1,12 @@
 class AppConstants{
 
 
-static const String BASE_URL ="https://sellphone-api-v1.herokuapp.com/";
+static const String BASE_URL ="https://sellphone-api-v1.herokuapp.com";
 
 
 //api endpoint
-static const String REG_URI ="/auth/registration/";
-static const String LOG_URI ="/auth/login/";
+static const String REG_URI ="auth/registration/";
+static const String LOG_URI ="auth/login/";
 
 
 

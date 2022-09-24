@@ -32,6 +32,7 @@ class _splashscreenState extends State<splashscreen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
+          margin: EdgeInsets.all(10),
           height: 600,
           child: Column(
             children: <Widget>[
@@ -68,6 +69,7 @@ class _splashscreenState extends State<splashscreen> {
                       ),
                       Spacer(flex: 3),
                       Container(
+                        width: 120,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.grey
@@ -76,7 +78,8 @@ class _splashscreenState extends State<splashscreen> {
                           //text: "Continue",
                           child: Text('Skip',
                           style: TextStyle(color: Colors.black,
-                          fontSize: 15),),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400),),
                           onPressed: () {
                             Navigator.pushNamed(context, '/signup');
                           
@@ -112,10 +115,10 @@ class _splashscreenState extends State<splashscreen> {
       children: <Widget>[
         Spacer(),
         Text(
-          "Sellphone",
+          "SELLPHONE",
           style: TextStyle(
             fontSize: 25,
-            color: Color(0xFFD8D8D8),
+            color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),

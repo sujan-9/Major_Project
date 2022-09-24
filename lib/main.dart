@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loginbar/Models/product_model.dart';
+import 'package:loginbar/controllers/userController.dart';
 import 'package:loginbar/data/api/api_client.dart';
 import 'package:loginbar/data/repository/auth_repo.dart';
 import 'package:loginbar/helper/dependencies.dart';
-import 'package:loginbar/screens/Samsung-prediction.dart';
+
 import 'package:loginbar/screens/detail_page.dart';
-import 'package:loginbar/screens/favpage.dart';
+
 import 'package:loginbar/screens/forget_password.dart';
 import 'package:loginbar/screens/gridview.dart';
 import 'package:loginbar/screens/dashboard.dart';
-import 'package:loginbar/screens/iphone-prediction.dart';
+
 import 'package:loginbar/screens/login.dart';
 
 import 'package:loginbar/screens/profile.dart';
@@ -17,14 +19,17 @@ import 'package:loginbar/screens/selectmodel.dart';
 import 'package:loginbar/screens/sellPhone.dart';
 import 'package:loginbar/screens/signup.dart';
 import 'package:loginbar/screens/splashscreen.dart';
-import 'package:loginbar/widgets/dropdown.dart';
+
 import 'package:loginbar/controllers/auth_controller.dart';
+
+import 'controllers/Search_Controller.dart';
+import 'controllers/productController.dart';
 
 
 void main()async {
    WidgetsFlutterBinding.ensureInitialized();
     await init();
-  runApp( const MyApp());
+  runApp(  MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +38,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //  Get.find<AuthController>();
+      Get.find<ProductController>().getProductList();
+      Get.find<SearchController>().getSearchList();
+    //  Get.find<UserController>().getUserList();
     //  Get.find<ApiClient>();
     
     return GetMaterialApp(
@@ -51,24 +58,24 @@ class MyApp extends StatelessWidget {
    // home: Profile(),
    // home: PredictionPrice(),
    // home: loginscreen(),
-   // home: dropdown(),
-      initialRoute: '/',
-      routes:{
-        '/': (context) =>splashscreen  (),
-        '/login': (context) => loginscreen (),
-        '/signup': (context) =>  sign_in_screen(),
-        '/dashboard':(context) => dashboard(),
-       '/ProductDetail' :(context) =>  ProductDetail(),
-       '/forgetpassword' :(context) => ForgetPassword(),
-      '/favpage' :(context) => FavPage(),
+    //home: dashboard(),
+     initialRoute: '/',
+       routes:{
+          '/': (context) =>splashscreen  (),
+         '/login': (context) => loginscreen (),
+         '/signup': (context) =>  sign_in_screen(),
+         '/dashboard':(context) => dashboard(),
+    //    //'/ProductDetail' :(context) =>  ProductDetail(),
+    //    '/forgetpassword' :(context) => ForgetPassword(),
+    //  // '/favpage' :(context) => FavPage(),
      
-     '/selectmodel' :(context) => SelectModel(),
-     '/iphonePrediction' :(context) => IphonePrediction(),
-      '/samsungPrediction' :(context) => SamsungPrediction(),
-       '/profile' :(context) => Profile(),
+    //  '/selectmodel' :(context) => SelectModel(),
+    //  //'/iphonePrediction' :(context) => IphonePrediction(),
+    //   //'/samsungPrediction' :(context) => SamsungPrediction(),
+    //    '/profile' :(context) => Profile(),
       
       
-      } ,
+       } ,
     );
   }
 }

@@ -3,10 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
+import 'package:loginbar/screens/dashboard.dart';
+import 'package:loginbar/screens/forget_password.dart';
+import 'package:loginbar/screens/signup.dart';
 
 import '../Models/login_body_model.dart';
 import '../controllers/auth_controller.dart';
-
+import 'package:http/http.dart' as http;
 class loginscreen extends StatefulWidget {
   loginscreen({Key? key}) : super(key: key);
 
@@ -17,7 +20,8 @@ class loginscreen extends StatefulWidget {
 class _loginscreenState extends State<loginscreen> {
   var _emailController = TextEditingController();
   var _passController = TextEditingController();
-
+  
+ 
   void _login(){
     var authController = Get.find<AuthController>();
     
@@ -25,19 +29,9 @@ class _loginscreenState extends State<loginscreen> {
     
     String password = _passController.text.trim();
 
-    LoginBody loginBody = LoginBody(
-     
-      email: email,
-      password: password);
-      authController.login(loginBody).then((status){
-         if(status.isSuccess){
-        Navigator.pushNamed(context, '/dashboard');
-         }else{
-          print(status.message);
-         }
-      });
-      print(loginBody);
+   
   }
+
 
 
    final _formKey = GlobalKey<FormState>();
@@ -48,7 +42,11 @@ class _loginscreenState extends State<loginscreen> {
   final RegExp emailRegex = new RegExp(
       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
 
-
+    bool _passwordVisible =false;
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
   @override
   Widget build(BuildContext context) {
     
@@ -79,7 +77,7 @@ class _loginscreenState extends State<loginscreen> {
                       text: "Welcome to SellPhone".toUpperCase(),
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                      fontSize: 25,
+                      fontSize: 20,
                       color: Colors.black),
                        
           
@@ -91,7 +89,7 @@ class _loginscreenState extends State<loginscreen> {
                       text: "Login".toUpperCase(),
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                      fontSize: 20,
+                      fontSize: 22,
                       color: Colors.black),
                        
           
@@ -107,11 +105,12 @@ class _loginscreenState extends State<loginscreen> {
           
                     ),
                     child: TextFormField(
-                      controller: _emailController,
+                      
+                     // controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 18,
+                      style: TextStyle(fontSize: 20,
                       fontWeight: FontWeight.w400),
-                      obscureText: false,
+                      
                        validator: (value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please enter your email address';
@@ -144,7 +143,7 @@ class _loginscreenState extends State<loginscreen> {
                 ),
             
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              prefixIcon: Icon(Icons.mail),
+              prefixIcon: Icon(Icons.mail,color: Colors.black),
                enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
             borderSide: BorderSide(color: Colors.grey, width: 1.5),
@@ -168,12 +167,12 @@ class _loginscreenState extends State<loginscreen> {
           
                     ),
                     child: TextFormField(
-                      controller: _passController,
-                      style: TextStyle(fontSize: 18,
+                    //  controller: _passController,
+                      style: TextStyle(fontSize: 20,
                       fontWeight: FontWeight.w400),
                       
-                obscureText: true,
-                onSaved: (newValue) => _password = newValue,
+                 obscureText: !_passwordVisible,
+                 onSaved: (newValue) => _password = newValue,
                 
                
                  decoration:  InputDecoration(
@@ -191,7 +190,21 @@ class _loginscreenState extends State<loginscreen> {
                 ),
             
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              prefixIcon: Icon(Icons.lock),
+              prefixIcon: Icon(Icons.lock,color: Colors.black),
+              suffixIcon: IconButton(
+                icon: Icon(
+              // Based on passwordVisible state choose the icon
+               _passwordVisible
+               ? Icons.visibility
+               : Icons.visibility_off,
+               color: Colors.black,
+               ),
+               onPressed: () { 
+                 setState(() {
+                   _passwordVisible = !_passwordVisible;
+               });
+                },
+                ),
              
               
                enabledBorder: OutlineInputBorder(
@@ -222,13 +235,16 @@ class _loginscreenState extends State<loginscreen> {
                      GestureDetector(
                        child: InkWell(
                         onTap: (){
-                           Navigator.pushNamed(context, '/forgetpassword');
+                            Navigator.push(
+                            context,
+                          MaterialPageRoute(builder: (context) => ForgetPassword()),
+                         );
                         },
                          child: Text(
                            "forget password".toUpperCase(),
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
-                          fontSize: 17,
+                          fontSize: 18,
                           color: Colors.black),
                           
                            
@@ -255,11 +271,25 @@ class _loginscreenState extends State<loginscreen> {
                         onPressed: (){
                         if(_formKey.currentState!.validate()){
                             // Navigator.pushNamed(context, '/dashboard');
-                            _login();
+                            //_login();
+                           Future.delayed(Duration(seconds: 2)).then((_) {
+                            ScaffoldMessenger.of(context)
+                           .showSnackBar(SnackBar(
+                            content: Text("Login Successful"),
+                            duration: new Duration(seconds: 2),
+                            behavior: SnackBarBehavior.floating,
+                            backgroundColor: Colors.grey.shade700,
+                            shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.all(Radius.circular(20))
+                                 )));
+                                 } );
+                            Navigator.pushNamed(context, '/dashboard');
+
+                            
                             
                              
                         }
-                        return null;
+                      
                           
                          
                         
@@ -272,6 +302,7 @@ class _loginscreenState extends State<loginscreen> {
                        
                        child: Text("Login".toUpperCase(),style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontSize: 20,
                         color: Colors.black,
                        ),)),
                      ),
@@ -282,14 +313,18 @@ class _loginscreenState extends State<loginscreen> {
                       text: "Dont have an account?",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                      fontSize: 16,
+                      fontSize: 18,
                       color: Colors.black),
                      children:  <TextSpan>[
               TextSpan(
              recognizer: TapGestureRecognizer()..onTap = () {
-                          Navigator.pushNamed(context, '/signup');
+                           Navigator.pushNamed(context, '/signup');
+  //                          Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => sign_in_screen()),
+  // );
                            },
-                  text: " SIGN UP", style: TextStyle(fontSize: 18,color: Colors.blueAccent)),
+                  text: " SIGN UP", style: TextStyle(fontSize: 20,color: Colors.blueAccent)),
             ],
                        
           
@@ -306,3 +341,5 @@ class _loginscreenState extends State<loginscreen> {
 
   }
 }
+
+ 
