@@ -6,11 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loginbar/screens/gridview.dart';
 import 'package:flutter/gestures.dart';
+import 'package:loginbar/screens/search.dart';
 
 import '../Models/search_model.dart';
 import '../controllers/productController.dart';
 import '../widgets/custom_navbar.dart';
 import 'package:http/http.dart' as http;
+
+import 'SearchBar.dart';
 
 
 class dashboard extends StatefulWidget {
@@ -37,7 +40,7 @@ class _dashboardState extends State<dashboard> {
         onWillPop:_requestPop ,
         child: Scaffold(
           appBar: AppBar(
-                 leading: Icon(Icons.home,color: Colors.black,),
+                // leading: Icon(Icons.home,color: Colors.black,),
                  backgroundColor: Colors.white.withOpacity(1),
                  elevation: 0,
                  centerTitle: true,
@@ -47,6 +50,19 @@ class _dashboardState extends State<dashboard> {
                   fontSize: 19,
                   color: Colors.black,
                  ),),
+                  actions: [
+          IconButton(
+            onPressed: () {
+              // method to show the search bar
+              showSearch(
+                context: context,
+                // delegate to customize the search bar
+                delegate: CustomSearchDelegate()
+              );
+            },
+            icon: const Icon(Icons.search,color: Colors.black,),
+          )
+        ],
                 
           ),
           body:   Stack(
@@ -93,7 +109,10 @@ class _dashboardState extends State<dashboard> {
                     
                     
                     
-                    
+                    // InkWell(
+                    //   child: searchBar(),
+
+                    //   ),
                     
                     SizedBox(
                       height: 15,
