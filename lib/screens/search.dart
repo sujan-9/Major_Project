@@ -6,7 +6,7 @@ class CustomSearchDelegate extends SearchDelegate {
   
 // Demo list to show querying
 List<String> searchTerms = [
-	"Iphone7plusplus",
+	"Iphone7pplus",
 	"Iphone8",
 	"Iphone9",
 	"Iphonex",
@@ -16,6 +16,7 @@ List<String> searchTerms = [
 	"SamsungGalaxy",
   "SamsungNote",
   "SamsungS20",
+  "SamsungS21"
   "SamsungS21",
   
 
@@ -64,7 +65,8 @@ Widget buildResults(BuildContext context) {
 		var result = matchQuery[index];
 		return ListTile(
 		title: Text(result),
-    leading: Icon(Icons.image_aspect_ratio_sharp),
+    leading: Icon(Icons.phone_android_rounded),
+    subtitle: Text("Rs 50,000"),
 		);
 	},
 	);
@@ -103,7 +105,7 @@ Widget buildSuggestions(BuildContext context) {
 	itemBuilder: (context, index) {
 		var result = matchQuery[index];
 		return ListTile(
-		title: Text(result,style: TextStyle(color: Colors.white),),
+		title: Text(result,),
 		);
 	},
 	);

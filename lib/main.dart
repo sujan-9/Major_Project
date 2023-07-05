@@ -59,24 +59,24 @@ class MyApp extends StatelessWidget {
    // home: Profile(),
    // home: PredictionPrice(),
    // home: loginscreen(),
-    home: dashboard(),
+   // home: dashboard(),
      initialRoute: '/',
-    //    routes:{
-    //       '/': (context) =>splashscreen  (),
-    //      '/login': (context) => loginscreen (),
-    //      '/signup': (context) =>  sign_in_screen(),
-    //      '/dashboard':(context) => dashboard(),
-    // //    //'/ProductDetail' :(context) =>  ProductDetail(),
-    // //    '/forgetpassword' :(context) => ForgetPassword(),
-    // //  // '/favpage' :(context) => FavPage(),
+       routes:{
+          '/': (context) =>splashscreen  (),
+         '/login': (context) => loginscreen (),
+         '/signup': (context) =>  sign_in_screen(),
+         '/dashboard':(context) => dashboard(),
+    //    //'/ProductDetail' :(context) =>  ProductDetail(),
+    //    '/forgetpassword' :(context) => ForgetPassword(),
+    //  // '/favpage' :(context) => FavPage(),
      
-    // //  '/selectmodel' :(context) => SelectModel(),
-    // //  //'/iphonePrediction' :(context) => IphonePrediction(),
-    // //   //'/samsungPrediction' :(context) => SamsungPrediction(),
-    // //    '/profile' :(context) => Profile(),
+    //  '/selectmodel' :(context) => SelectModel(),
+    //  //'/iphonePrediction' :(context) => IphonePrediction(),
+    //   //'/samsungPrediction' :(context) => SamsungPrediction(),
+    //    '/profile' :(context) => Profile(),
       
       
-    //    } ,
+       } ,
     );
   }
 }
